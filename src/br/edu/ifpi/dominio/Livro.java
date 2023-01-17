@@ -4,15 +4,16 @@ public class Livro {
     private String titulo;
     private String autor;
     private String dataPub;
-    private int qtdCopias;
+    private int qtdCopias, id;
     private AreaCon areaCon;
 
-    public Livro(String titulo, String autor, String dataPub, int qtdCopias, AreaCon areaCon) {
+    public Livro(String titulo, String autor, String dataPub, int qtdCopias, AreaCon areaCon, int id) {
         this.titulo = titulo;
         this.autor = autor;
         this.dataPub = dataPub;
         this.qtdCopias = qtdCopias;
         this.areaCon = areaCon;
+        this.id = id;
     }
 
     public String getTitulo() {
@@ -55,11 +56,20 @@ public class Livro {
         this.areaCon = areaCon;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     @Override
     public String toString() {
-        return " Titulo do Livro: " + titulo+ " || Quantidade de copias: "+qtdCopias+areaCon;
+        return " Titulo do Livro: " + titulo+ " || Quantidade de copias: "+qtdCopias+areaCon+ " || Id: "+id;
     }
+
+    
 
     
 

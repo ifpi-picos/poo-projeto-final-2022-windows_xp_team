@@ -5,15 +5,17 @@ public class Usuario {
     private String email;
     private String dataNasc;
     private Endereco endereco;
-    private int qtdUsuarios;
+    private int id;
 
-    public Usuario(String nome, String email, String dataNasc, Endereco endereco, int qtdUsuarios) {
+    public Usuario(String nome, String email, String dataNasc, Endereco endereco, int id) {
         this.nome = nome;
         this.email = email;
         this.dataNasc = dataNasc;
         this.endereco = endereco;
-        this.qtdUsuarios = qtdUsuarios;
+        this.id = id;
     }
+
+    
 
     public String getNome() {
         return nome;
@@ -47,19 +49,22 @@ public class Usuario {
         this.endereco = endereco;
     }
 
-    
-    public int getQtdUsuarios() {
-        return qtdUsuarios;
-    }
-
-    public void setQtdUsuarios(int qtdUsuarios) {
-        this.qtdUsuarios = qtdUsuarios;
-    }
-    
 
     @Override
     public String toString() {
         return " Nome: " + this.nome + endereco;
+    }
+
+
+
+    public int getId() {
+        return id;
+    }
+
+
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     

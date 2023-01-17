@@ -1,22 +1,33 @@
 package br.edu.ifpi.dominio;
 
 public class Emprestimo {
-    private String data;
+    private String dataEmprestimo;
+    private String dataDevolucao;
     private Livro livro;
     private Usuario usuario;
 
-    public Emprestimo(String data, Livro livro, Usuario usuario) {
-        this.data = data;
+
+    public Emprestimo(String dataEmprestimo, String dataDevolucao,Livro livro, Usuario usuario) {
+        this.dataEmprestimo = dataEmprestimo;
+        this.dataDevolucao = dataDevolucao;
         this.livro = livro;
         this.usuario = usuario;
     }
 
-    public String getData() {
-        return data;
+    public String getDataEmprestimo() {
+        return dataEmprestimo;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setDataEmprestimo(String dataEmprestimo) {
+        this.dataEmprestimo = dataEmprestimo;
+    }
+
+    public String getDataDevolucao() {
+        return dataDevolucao;
+    }
+
+    public void setDataDevolucao(String dataDevolucao) {
+        this.dataDevolucao = dataDevolucao;
     }
 
     public Livro getLivro() {
@@ -34,5 +45,13 @@ public class Emprestimo {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
+    @Override
+    public String toString() {
+        return "Contrato feito:  Data do Emprestimo: " + dataEmprestimo + "|| Data da Devolução=" + dataDevolucao + "|| LIVRO=" + livro
+                + "|| USÚARIO=" + usuario;
+    }
+
+    
 
 }

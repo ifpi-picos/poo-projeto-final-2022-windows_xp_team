@@ -10,8 +10,8 @@ public class App {
         ArrayList<AreaCon> areaCons = new ArrayList<>();
         ArrayList<Livro> livros = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
-        int opcao, opcao2, opcao3;
-        boolean loop2, loop1 = true;
+        int opcao, opcao2, opcao3, opcao4;
+        boolean loop2, loop1, loop3 = true;
 
         while (true) {
             System.out.println("\n B I B L I O T E C A \n");
@@ -59,9 +59,11 @@ public class App {
                                 String dataPub = scanner.nextLine();
                                 System.out.print("Quantidade de copias: ");
                                 int qtdCopias = Integer.parseInt(scanner.nextLine());
+                                System.out.print("Identificador 'ID': ");
+                                int id = Integer.parseInt(scanner.nextLine());
 
                                 // novo objeto da classe Livros
-                                Livro livro = new Livro(titulo, autor, dataPub, qtdCopias, areaCon);
+                                Livro livro = new Livro(titulo, autor, dataPub, qtdCopias, areaCon, id);
                                 // adicionar no ArrayList de livros
                                 livros.add(livro);
                                 System.out.println("\nLivro cadastrado com sucesso");
@@ -115,22 +117,24 @@ public class App {
                                         String newDataPub = scanner.nextLine();
                                         System.out.print("Quantidade de copias: ");
                                         int newQtdCopias = Integer.parseInt(scanner.nextLine());
+                                        System.out.print("Id: ");
+                                        int newId = Integer.parseInt(scanner.nextLine());
                                         liv.setTitulo(newTitulo);
                                         liv.setAutor(newAutor);
                                         liv.setDataPub(newDataPub);
                                         liv.setQtdCopias(newQtdCopias);
+                                        liv.setId(newId);
                                     }
                                 }
                                 break;
-                            case 5:
+                            case 5: // Fim do loop
                                 loop1 = false;
                                 break;
                         }
                     }
                     break;
 
-                case 2:
-                    // gerenciamento de usuários
+                case 2: // gerenciamento de usuários
                     loop2 = true;
                     while (loop2 == true) {
                         System.out.println("\n||| M E N U   U S U Á R I O S |||");
@@ -141,8 +145,7 @@ public class App {
                         System.out.println("4 | Alterar Usuário");
                         System.out.println("5 | Voltar Menu Anterior");
                         System.out.print("Sua opção: ");
-                        // lê a opção do usuário
-                        opcao3 = Integer.parseInt(scanner.nextLine());
+                        opcao3 = Integer.parseInt(scanner.nextLine()); // lê a opção do usuário
 
                         switch (opcao3) {
                             case 1: // Cadastrar um novo usuário
@@ -166,9 +169,11 @@ public class App {
                                 String email = scanner.nextLine();
                                 System.out.print("Data de Nascimento: ");
                                 String dataNasc = scanner.nextLine();
+                                System.out.print("Identificação Id: ");
+                                int id = Integer.parseInt(scanner.nextLine());
 
                                 // novo objeto da classe Usuario
-                                Usuario usuario = new Usuario(nomeUsuario, email, dataNasc, endereco, 0);
+                                Usuario usuario = new Usuario(nomeUsuario, email, dataNasc, endereco, id);
                                 usuarios.add(usuario);// adicionar no ArrayList de usuários
                                 System.out.println("\nO usuário foi cadastrado com sucesso");
                                 break;
@@ -226,21 +231,71 @@ public class App {
                                         String newEmail = scanner.nextLine();
                                         System.out.print("Data de Nascimento: ");
                                         String newDataNasc = scanner.nextLine();
+                                        System.out.print("Id: ");
+                                        int newid = Integer.parseInt(scanner.nextLine());
                                         user.setNome(newNomeUsuario);
                                         user.setEmail(newEmail);
                                         user.setDataNasc(newDataNasc);
+                                        user.setId(newid);
                                     }
                                 }
                                 break;
 
-                            case 5: //Fim do loop
+                            case 5: // Fim do loop
                                 loop2 = false;
                                 break;
                         }
                     }
+                    break;
 
-                case 3: //Gerenciamento de emprestimos
-                    
+                case 3: // Gerenciamento de emprestimos
+                    System.out.println("\n||| M E N U   E M P R E S T I M O |||");
+                    System.out.println("||| LISTA DE OPÇÕES |||");
+                    System.out.println("1 | Login");
+                    System.out.println("2 | Voltar Menu Anterior");
+                    System.out.print("Sua opção: ");
+                    opcao4 = Integer.parseInt(scanner.nextLine()); // lê a opção do usuário
+                    switch (opcao4) {
+                        case 1:
+                            loop3 = true;
+                            while (loop3 == true) {
+                                System.out.print("\nInforme o ID do usuário: ");
+                                int pesquisaUsuario = Integer.parseInt(scanner.nextLine());
+
+                                for (Usuario user : usuarios) {
+                                    if (user.getId() == pesquisaUsuario) {
+                                        System.out.println("\n Perfil: " + user.getNome());
+                                        System.out.println("LIVROS DISPONIVEIS");
+
+                                        for (Livro liv : livros) {
+                                            System.out.println("Nº: " + (livros.lastIndexOf(liv)) + "||" + liv);
+                                        }
+                                        System.out.println("Quantidade de livros : " + livros.size());
+                                        System.out.print("Informe o 'ID' do livro que deseja: ");
+                                        int livroEscolhido = Integer.parseInt(scanner.nextLine());
+
+                                        for (Livro liv : livros) {
+                                            if (liv.getId() == livroEscolhido) {
+
+                                                Emprestimo emprestimo = new Emprestimo("17/01/2023","28/02/2023", liv, user);
+                                                System.out.println(emprestimo.toString());
+                                            }else {
+                                                System.out.println("Id inválido");
+                                            }
+                                            
+                                        }
+
+                                    } else {
+                                        System.out.println("Usuario inválido");
+                                    }
+                                    break;
+                                }
+                                break;
+                            }
+                        case 2:
+                            loop3 = false;
+                            break;
+                    }
 
                     break;
 
