@@ -75,9 +75,8 @@ public class App {
                                 qtdLivros = (livros.size());
                                 for (Livro liv : livros) {
                                     System.out.println(liv);
-                                    
-                                    
                                 }
+                                System.out.println("Quantidade de livros: " + livros.size());
                                 break;
 
                             // PAREI AQUIII ADICIONAR A OÇÃO REMOVER
@@ -90,12 +89,16 @@ public class App {
                                 }
                                 System.out.print("Nº: ");
                                 int delete0 = Integer.parseInt(scanner.nextLine());
-                                livros.remove(delete0);
+                                for (Livro liv : livros) {
+                                    if (liv.getQtdCopias() == delete0) {
+                                        livros.remove(liv);
+                                        break;
+                                    }
+                                }
                                 qtdLivros = (livros.size());
                                 System.out.println("LIVROS ATUALIZADOS");
                                 for (Livro liv : livros) {
-
-                                    System.out.println(liv);
+                                    System.out.println("Nº: "+"index ||"+liv);
                                 }
                                 break;
 
