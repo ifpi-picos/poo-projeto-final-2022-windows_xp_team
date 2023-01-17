@@ -25,4 +25,10 @@ public class AreaCon {
         this.descricao = descricao;
     }
 
+    @Override
+    public String toString() {
+        return " || Tema: " + titulo + " || descricao: " + descricao;
+    }
+    
+
 }

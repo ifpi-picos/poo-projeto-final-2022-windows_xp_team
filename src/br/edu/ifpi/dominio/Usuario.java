@@ -59,7 +59,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Nº: "+(this.qtdUsuarios - 1)+" Nome: " + this.nome;
+        return " Nome: " + this.nome + endereco;
     }
     
     

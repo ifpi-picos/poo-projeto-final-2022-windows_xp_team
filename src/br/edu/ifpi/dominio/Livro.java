@@ -6,9 +6,8 @@ public class Livro {
     private String dataPub;
     private int qtdCopias;
     private AreaCon areaCon;
-    private int qtdLivros;
 
-    public Livro(String titulo, String autor, String dataPub, int qtdCopias, AreaCon areaCon, int qtdLivros) {
+    public Livro(String titulo, String autor, String dataPub, int qtdCopias, AreaCon areaCon) {
         this.titulo = titulo;
         this.autor = autor;
         this.dataPub = dataPub;
@@ -56,17 +55,10 @@ public class Livro {
         this.areaCon = areaCon;
     }
 
-    public int getQtdLivros() {
-        return qtdLivros;
-    }
-
-    public void setQtdLivros(int qtdLivros) {
-        this.qtdLivros = qtdLivros;
-    }
 
     @Override
     public String toString() {
-        return "Nº: "+(qtdLivros - 1)+" || Titulo do Livro: " + titulo+ " || Quantidade de copias: "+qtdCopias;
+        return " Titulo do Livro: " + titulo+ " || Quantidade de copias: "+qtdCopias+areaCon;
     }
 
     
